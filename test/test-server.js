@@ -12,6 +12,8 @@ function updateDB (data) {
 	fs.writeFile('messageDB.json', newData, err => {
 		// error checking
 		if(err) throw err;
+		
+		console.log("New data added");
 	});   
 }
 //add the JSON middleware
@@ -31,14 +33,13 @@ app.get('/hello', function(req, res) {
 app.get('/new', function(req, res) {
 	let {name}= req.query;
 	let data = JSON.parse(fs.readFileSync('messageDB.json'));
-	if(name == (data[data.length - 1]?.address||'xyz')) {
-	res.status(200).send(data[data.length - 1]||{m:0});
-	data.pop();
-	updateDB(data);
+	if(name == data[data.length - 1].address) {
+	res.status(200).send(data[data.length - 1]);
 	}
 	else res.status(200).send({m:0});
 
-	
+	data.pop();
+	updateDB(data);
 });
 //setup a post handler
 app.post('/', (req, res) =>{
@@ -46,10 +47,13 @@ app.post('/', (req, res) =>{
 	const {name} = req.body
 	const {message} = req.body
 	const {address} = req.body
-	let messageObj = {name: name, message: message, address: address,m:1}
-	data.push(messageObj)
-	updateDB(data)
-	res.send({message: 'Added message'})	
+	
+	console.log("Somenew message:"+JSON.stringify(req.body))
+
+		let messageObj = {name: name, message: message, address: address,m:1}
+		data.push(messageObj)
+		updateDB(data)
+		res.send({message: 'Added message'})	
 		
 	})
 	
