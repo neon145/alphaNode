@@ -29,7 +29,7 @@ app.get('/hello', function(req, res) {
 	});
 });
 app.get('/new', function(req, res) {
-	let {name}= req.query;
+	let {name}= req.query??'';
 	let data = JSON.parse(fs.readFileSync('messageDB.json'));
 	if(name == (data[data.length - 1]?.address||'xyz')) {
 	res.status(200).send(data[data.length - 1]||{m:0});

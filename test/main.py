@@ -13,7 +13,7 @@ def call_repeatedly(interval, func, *args):
 
 
 userName = "neon"
-url = "http://localhost:8080"
+url = "https://alphanode.onrender.com"
 
 def sendMessage(message):
     data = {
@@ -25,7 +25,7 @@ def sendMessage(message):
     response = requests.post(url, json=data)
 def getMessage():
     try:
-        response = json.loads(requests.get(f'http://localhost:8080/new?name={userName}').text)
+        response = json.loads(requests.get(f'https://alphanode.onrender.com/new?name={userName}').text)
         m = response["m"]
         if(m == 0):
             pass
