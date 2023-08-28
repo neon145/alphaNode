@@ -13,7 +13,7 @@ def call_repeatedly(interval, func, *args):
 
 
 userName = "neon"
-url = "https://alphanode.onrender.com"
+url = "https://alphanode-495q.onrender.com"
 
 def sendMessage(message):
     data = {
