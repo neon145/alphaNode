@@ -1,7 +1,7 @@
 
 import requests
 from threading import Event, Thread
-import time
+
 import json
 def call_repeatedly(interval, func, *args):
     stopped = Event()
@@ -13,7 +13,7 @@ def call_repeatedly(interval, func, *args):
 
 
 userName = "argon"
-url = "https://alphanode.onrender.com"
+url = "https://alphanode-495q.onrender.com"
 
 def sendMessage(message):
     data = {
