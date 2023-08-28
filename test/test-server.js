@@ -35,11 +35,13 @@ app.get('/new', function(req, res) {
 	let data = JSON.parse(fs.readFileSync('messageDB.json'));
 	if(name == data[data.length - 1].address) {
 	res.status(200).send(data[data.length - 1]);
+		data.pop();
+		updateDB(data);
 	}
 	else res.status(200).send({m:0});
 
-	data.pop();
-	updateDB(data);
+	
+	
 });
 //setup a post handler
 app.post('/', (req, res) =>{
